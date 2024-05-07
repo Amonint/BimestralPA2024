@@ -12,4 +12,5 @@ public class Paquete {
     int tipo;
     int cosa;
     int danilo;
+    int daniel;
 }
