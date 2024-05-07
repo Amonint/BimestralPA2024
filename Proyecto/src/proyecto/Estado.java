@@ -6,8 +6,8 @@ package proyecto;
 
 /**
  *
- * @author sofiv
+ * @author Usuario
  */
-public class Paquete {
-    int tipo;
+public class Estado {
+    
 }
