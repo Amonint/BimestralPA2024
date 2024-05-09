@@ -15,5 +15,5 @@ public class Paquete {
     int daniel;
     int soffi;
     int holis;
-    int prueba;
+    int prueba1;
 }
