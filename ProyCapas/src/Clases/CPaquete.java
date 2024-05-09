@@ -15,4 +15,5 @@ public class CPaquete {
     int daniel;
     int soffi;
     int holis;
+    int prueba1;
 }
