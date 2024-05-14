@@ -25,7 +25,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Repartidor.findAll", query = "SELECT r FROM Repartidor r"),
     @NamedQuery(name = "Repartidor.findByIdRepartidor", query = "SELECT r FROM Repartidor r WHERE r.idRepartidor = :idRepartidor"),
     @NamedQuery(name = "Repartidor.findByZona", query = "SELECT r FROM Repartidor r WHERE r.zona = :zona")})
-public class Repartidor implements Serializable {
+public class Repartidor extends Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

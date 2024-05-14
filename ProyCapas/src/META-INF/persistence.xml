@@ -4,13 +4,13 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Clases.Paquete</class>
     <class>Clases.Cliente</class>
-    <class>Clases.Bodegero</class>
     <class>Clases.Persona</class>
     <class>Clases.Estado</class>
     <class>Clases.Entrega</class>
     <class>Clases.Empleado</class>
     <class>Clases.Repartidor</class>
     <class>Clases.Direccion</class>
+    <class>Clases.Bodegero</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/paquetes?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

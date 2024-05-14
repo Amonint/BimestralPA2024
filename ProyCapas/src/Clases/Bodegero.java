@@ -24,7 +24,8 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Bodegero.findAll", query = "SELECT b FROM Bodegero b"),
     @NamedQuery(name = "Bodegero.findByIdBodegero", query = "SELECT b FROM Bodegero b WHERE b.idBodegero = :idBodegero"),
-    @NamedQuery(name = "Bodegero.findByLocal", query = "SELECT b FROM Bodegero b WHERE b.local = :local")})
+    @NamedQuery(name = "Bodegero.findByLocal", query = "SELECT b FROM Bodegero b WHERE b.local = :local"),
+    @NamedQuery(name = "Bodegero.findByTipo", query = "SELECT b FROM Bodegero b WHERE b.tipo = :tipo")})
 public class Bodegero implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,12 +36,20 @@ public class Bodegero implements Serializable {
     private Integer idBodegero;
     @Column(name = "local")
     private String local;
+    @Basic(optional = false)
+    @Column(name = "tipo")
+    private String tipo;
 
     public Bodegero() {
     }
 
     public Bodegero(Integer idBodegero) {
         this.idBodegero = idBodegero;
+    }
+
+    public Bodegero(Integer idBodegero, String tipo) {
+        this.idBodegero = idBodegero;
+        this.tipo = tipo;
     }
 
     public Integer getIdBodegero() {
@@ -57,6 +66,14 @@ public class Bodegero implements Serializable {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
