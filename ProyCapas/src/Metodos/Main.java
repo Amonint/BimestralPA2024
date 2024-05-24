@@ -46,7 +46,7 @@ public class Main {
                             aux = sc.nextLine();
                             System.out.println("Ingrese el correo");
                             aux = sc.nextLine();
-                            crearBodegero(Bodegero objbg
+                            //crearBodegero(Bodegero objbg
                             );
                             break;
                         case 2:
