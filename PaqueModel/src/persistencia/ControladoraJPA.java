@@ -87,16 +87,16 @@ public class ControladoraJPA {
         direccionJPA.edit(direccion);
     }
 
-    public void eliminarDireccion(Long id) throws Exception {
-        direccionJPA.destroy(id);
+    public void eliminarDireccion(String codigo) throws Exception {
+        direccionJPA.destroy(codigo);
     }
 
     public List<Direccion> listarDirecciones() {
         return direccionJPA.findDireccionEntities();
     }
 
-    public Direccion buscarDireccion(Long id) {
-        return direccionJPA.findDireccion(id);
+    public Direccion buscarDireccion(String codigo) {
+        return direccionJPA.findDireccion(codigo);
     }
 
     public int contarDirecciones() {
@@ -191,16 +191,16 @@ public class ControladoraJPA {
         paqueteJPA.edit(paquete);
     }
 
-    public void eliminarPaquete(int id) throws Exception {
-        paqueteJPA.destroy(id);
+    public void eliminarPaquete(String codigo) throws Exception {
+        paqueteJPA.destroy(codigo);
     }
 
     public List<Paquete> listarPaquetes() {
         return paqueteJPA.findPaqueteEntities();
     }
 
-    public Paquete buscarPaquete(int id) {
-        return paqueteJPA.findPaquete(id);
+    public Paquete buscarPaquete(String codigo) {
+        return paqueteJPA.findPaquete(codigo);
     }
 
     public int contarPaquetes() {

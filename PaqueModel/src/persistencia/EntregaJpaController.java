@@ -49,7 +49,7 @@ public class EntregaJpaController implements Serializable {
             }
             Paquete paquete = entrega.getPaquete();
             if (paquete != null) {
-                paquete = em.getReference(paquete.getClass(), paquete.getIdpaq());
+                paquete = em.getReference(paquete.getClass(), paquete.getCodigo());
                 entrega.setPaquete(paquete);
             }
             em.persist(entrega);
@@ -89,7 +89,7 @@ public class EntregaJpaController implements Serializable {
                 entrega.setCliente(clienteNew);
             }
             if (paqueteNew != null) {
-                paqueteNew = em.getReference(paqueteNew.getClass(), paqueteNew.getIdpaq());
+                paqueteNew = em.getReference(paqueteNew.getClass(), paqueteNew.getCodigo());
                 entrega.setPaquete(paqueteNew);
             }
             entrega = em.merge(entrega);

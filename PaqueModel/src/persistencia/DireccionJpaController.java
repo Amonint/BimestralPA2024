@@ -65,7 +65,7 @@ public class DireccionJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Direccion persistentDireccion = em.find(Direccion.class, direccion.getId());
+            Direccion persistentDireccion = em.find(Direccion.class, direccion.getCodigo());
             Cliente clienteOld = persistentDireccion.getCliente();
             Cliente clienteNew = direccion.getCliente();
             if (clienteNew != null) {
@@ -85,9 +85,9 @@ public class DireccionJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = direccion.getId();
-                if (findDireccion(id) == null) {
-                    throw new NonexistentEntityException("The direccion with id " + id + " no longer exists.");
+                String codigo = direccion.getCodigo();
+                if (findDireccion(codigo) == null) {
+                    throw new NonexistentEntityException("The direccion with id " + codigo + " no longer exists.");
                 }
             }
             throw ex;
@@ -98,17 +98,17 @@ public class DireccionJpaController implements Serializable {
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void destroy(String codigo) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Direccion direccion;
             try {
-                direccion = em.getReference(Direccion.class, id);
-                direccion.getId();
+                direccion = em.getReference(Direccion.class,codigo );
+                direccion.getCodigo();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The direccion with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The direccion with id " + codigo + " no longer exists.", enfe);
             }
             Cliente cliente = direccion.getCliente();
             if (cliente != null) {
@@ -148,10 +148,10 @@ public class DireccionJpaController implements Serializable {
         }
     }
 
-    public Direccion findDireccion(Long id) {
+    public Direccion findDireccion(String codigo) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Direccion.class, id);
+            return em.find(Direccion.class, codigo);
         } finally {
             em.close();
         }

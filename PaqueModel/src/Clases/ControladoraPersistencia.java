@@ -41,6 +41,8 @@ public class ControladoraPersistencia {
 
     public void crearCliente(Cliente cliente) throws Exception {
         controJPA.crearCliente(cliente);
+        System.out.println("Cliente creado");
+
     }
 
     public void editarCliente(Cliente cliente) throws Exception {
@@ -52,6 +54,7 @@ public class ControladoraPersistencia {
     }
 
     public List<Cliente> listarClientes() {
+        
         return controJPA.listarClientes();
     }
 
@@ -66,22 +69,24 @@ public class ControladoraPersistencia {
 
     public void crearDireccion(Direccion direccion) {
         controJPA.crearDireccion(direccion);
+        System.out.println("Direccion creado");
+
     }
 
     public void editarDireccion(Direccion direccion) throws Exception {
         controJPA.editarDireccion(direccion);
     }
 
-    public void eliminarDireccion(Long id) throws Exception {
-        controJPA.eliminarDireccion(id);
+    public void eliminarDireccion(String codigo) throws Exception {
+        controJPA.eliminarDireccion(codigo);
     }
 
     public List<Direccion> listarDirecciones() {
         return controJPA.listarDirecciones();
     }
 
-    public Direccion buscarDireccion(Long id) {
-        return controJPA.buscarDireccion(id);
+    public Direccion buscarDireccion(String codigo) {
+        return controJPA.buscarDireccion(codigo);
     }
 
     public int contarDirecciones() {
@@ -172,16 +177,16 @@ public class ControladoraPersistencia {
         controJPA.editarPaquete(paquete);
     }
 
-    public void eliminarPaquete(int id) throws Exception {
-        controJPA.eliminarPaquete(id);
+    public void eliminarPaquete(String codigo) throws Exception {
+        controJPA.eliminarPaquete(codigo);
     }
 
     public List<Paquete> listarPaquetes() {
         return controJPA.listarPaquetes();
     }
 
-    public Paquete buscarPaquete(int id) {
-        return controJPA.buscarPaquete(id);
+    public Paquete buscarPaquete(String codigo) {
+        return controJPA.buscarPaquete(codigo);
     }
 
     public int contarPaquetes() {

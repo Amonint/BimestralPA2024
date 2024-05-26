@@ -99,7 +99,7 @@ public class PaqueteJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Paquete persistentPaquete = em.find(Paquete.class, paquete.getIdpaq());
+            Paquete persistentPaquete = em.find(Paquete.class, paquete.getCodigo());
             Entrega entregaOld = persistentPaquete.getEntrega();
             Entrega entregaNew = paquete.getEntrega();
             Cliente clienteOld = persistentPaquete.getCliente();
@@ -164,9 +164,9 @@ public class PaqueteJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = paquete.getIdpaq();
-                if (findPaquete(id) == null) {
-                    throw new NonexistentEntityException("The paquete with id " + id + " no longer exists.");
+                String codigo = paquete.getCodigo();
+                if (findPaquete(codigo) == null) {
+                    throw new NonexistentEntityException("The paquete with id " + codigo + " no longer exists.");
                 }
             }
             throw ex;
@@ -177,17 +177,17 @@ public class PaqueteJpaController implements Serializable {
         }
     }
 
-    public void destroy(int id) throws NonexistentEntityException {
+    public void destroy(String codigo) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Paquete paquete;
             try {
-                paquete = em.getReference(Paquete.class, id);
-                paquete.getIdpaq();
+                paquete = em.getReference(Paquete.class, codigo);
+                paquete.getCodigo();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The paquete with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The paquete with id " + codigo + " no longer exists.", enfe);
             }
             Entrega entrega = paquete.getEntrega();
             if (entrega != null) {
@@ -237,10 +237,10 @@ public class PaqueteJpaController implements Serializable {
         }
     }
 
-    public Paquete findPaquete(int id) {
+    public Paquete findPaquete(String codigo) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Paquete.class, id);
+            return em.find(Paquete.class, codigo);
         } finally {
             em.close();
         }
