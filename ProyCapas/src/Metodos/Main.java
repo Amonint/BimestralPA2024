@@ -1,3 +1,5 @@
+
+   
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -12,7 +14,7 @@ import java.util.Scanner;
  *
  * @author sofiv
  */
-public class Main {
+     /*public class Main {
 
     static Scanner sc = new Scanner(System.in);
     static String aux;
@@ -47,7 +49,7 @@ public class Main {
                             System.out.println("Ingrese el correo");
                             aux = sc.nextLine();
                             //crearBodegero(Bodegero objbg
-                            );
+                            //);
                             break;
                         case 2:
                             System.out.println("Creando Empleado Repartidor");
@@ -79,7 +81,6 @@ public class Main {
             }
         } while (true);
 
-        /*
     public void crearBodegero(Bodegero bg) {
         if (aux == "bodegero") {
             id = "333" + ramdom.Math;
@@ -87,7 +88,8 @@ public class Main {
             int codigo = Integer.parseInt(cod);
             bg.setIdBodegero(codigo + Math.random());
         }
-         */
+        
     }
 
 }
+ */

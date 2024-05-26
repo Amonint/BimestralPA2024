@@ -32,22 +32,22 @@ public class Repartidor extends Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_repartidor")
-    private Integer idRepartidor;
+    private String idRepartidor;
     @Column(name = "zona")
     private Integer zona;
 
     public Repartidor() {
     }
 
-    public Repartidor(Integer idRepartidor) {
+    public Repartidor(String idRepartidor) {
         this.idRepartidor = idRepartidor;
     }
 
-    public Integer getIdRepartidor() {
+    public String getIdRepartidor() {
         return idRepartidor;
     }
 
-    public void setIdRepartidor(Integer idRepartidor) {
+    public void setIdRepartidor(String idRepartidor) {
         this.idRepartidor = idRepartidor;
     }
 

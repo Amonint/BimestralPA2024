@@ -33,7 +33,7 @@ public class Bodegero implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_bodegero")
-    private Integer idBodegero;
+    private String idBodegero;
     @Column(name = "local")
     private String local;
     @Basic(optional = false)
@@ -43,20 +43,20 @@ public class Bodegero implements Serializable {
     public Bodegero() {
     }
 
-    public Bodegero(Integer idBodegero) {
+    public Bodegero(String idBodegero) {
         this.idBodegero = idBodegero;
     }
 
-    public Bodegero(Integer idBodegero, String tipo) {
+    public Bodegero(String idBodegero, String tipo) {
         this.idBodegero = idBodegero;
         this.tipo = tipo;
     }
 
-    public Integer getIdBodegero() {
+    public String getIdBodegero() {
         return idBodegero;
     }
 
-    public void setIdBodegero(Integer idBodegero) {
+    public void setIdBodegero(String idBodegero) {
         this.idBodegero = idBodegero;
     }
 

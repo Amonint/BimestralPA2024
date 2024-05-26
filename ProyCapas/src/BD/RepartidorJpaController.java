@@ -54,7 +54,7 @@ public class RepartidorJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = repartidor.getIdRepartidor();
+                String id = repartidor.getIdRepartidor();
                 if (findRepartidor(id) == null) {
                     throw new NonexistentEntityException("The repartidor with id " + id + " no longer exists.");
                 }
