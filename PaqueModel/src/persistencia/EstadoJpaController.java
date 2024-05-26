@@ -43,7 +43,7 @@ public class EstadoJpaController implements Serializable {
             em.getTransaction().begin();
             Paquete paquete = estado.getPaquete();
             if (paquete != null) {
-                paquete = em.getReference(paquete.getClass(), paquete.getIdpaq());
+                paquete = em.getReference(paquete.getClass(), paquete.getCodigo());
                 estado.setPaquete(paquete);
             }
             em.persist(estado);
@@ -68,7 +68,7 @@ public class EstadoJpaController implements Serializable {
             Paquete paqueteOld = persistentEstado.getPaquete();
             Paquete paqueteNew = estado.getPaquete();
             if (paqueteNew != null) {
-                paqueteNew = em.getReference(paqueteNew.getClass(), paqueteNew.getIdpaq());
+                paqueteNew = em.getReference(paqueteNew.getClass(), paqueteNew.getCodigo());
                 estado.setPaquete(paqueteNew);
             }
             estado = em.merge(estado);

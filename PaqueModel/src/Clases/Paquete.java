@@ -15,9 +15,8 @@ import java.util.List;
 @Entity
 public class Paquete implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idpaq;
     private String codigo;
+    
     private String descripcion;
     private int peso;
     private int alto;
@@ -33,8 +32,8 @@ public class Paquete implements Serializable {
     public Paquete() {
     }
 
-    public Paquete(int idpaq, String codigo, String descripcion, int peso, int alto, List<Estado> estados, Entrega entrega, Cliente cliente) {
-        this.idpaq = idpaq;
+    public Paquete(String codigo, String descripcion, int peso, int alto, List<Estado> estados, Entrega entrega, Cliente cliente) {
+        
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.peso = peso;
@@ -44,13 +43,6 @@ public class Paquete implements Serializable {
         this.cliente = cliente;
     }
 
-    public int getIdpaq() {
-        return idpaq;
-    }
-
-    public void setIdpaq(int idpaq) {
-        this.idpaq = idpaq;
-    }
 
     public String getCodigo() {
         return codigo;
@@ -110,7 +102,7 @@ public class Paquete implements Serializable {
 
     @Override
     public String toString() {
-        return "Paquete{" + "idpaq=" + idpaq + ", codigo=" + codigo + ", descripcion=" + descripcion + ", peso=" + peso + ", alto=" + alto + ", estados=" + estados + ", entrega=" + entrega + ", cliente=" + cliente + '}';
+        return "Paquete{" + ", codigo=" + codigo + ", descripcion=" + descripcion + ", peso=" + peso + ", alto=" + alto + ", estados=" + estados + ", entrega=" + entrega + ", cliente=" + cliente + '}';
     }
 
     

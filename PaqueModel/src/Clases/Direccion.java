@@ -14,12 +14,11 @@ import javax.persistence.*;
 @Entity
 public class Direccion implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String codigo;
+    
     private String calle1;
     private String calle2;
-    private String referenda;
+    private String referencia;
     private boolean actual;
 
     @ManyToOne
@@ -28,22 +27,13 @@ public class Direccion implements Serializable {
     public Direccion() {
     }
 
-    public Direccion(Long id, String codigo, String calle1, String calle2, String referenda, boolean actual, Cliente cliente) {
-        this.id = id;
+    public Direccion(String codigo, String calle1, String calle2, String referencia, boolean actual, Cliente cliente) {
         this.codigo = codigo;
         this.calle1 = calle1;
         this.calle2 = calle2;
-        this.referenda = referenda;
+        this.referencia = referencia;
         this.actual = actual;
         this.cliente = cliente;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getCodigo() {
@@ -70,12 +60,12 @@ public class Direccion implements Serializable {
         this.calle2 = calle2;
     }
 
-    public String getReferenda() {
-        return referenda;
+    public String getReferencia() {
+        return referencia;
     }
 
-    public void setReferenda(String referenda) {
-        this.referenda = referenda;
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
     public boolean isActual() {
@@ -96,7 +86,7 @@ public class Direccion implements Serializable {
 
     @Override
     public String toString() {
-        return "Direccion{" + "id=" + id + ", codigo=" + codigo + ", calle1=" + calle1 + ", calle2=" + calle2 + ", referenda=" + referenda + ", actual=" + actual + ", cliente=" + cliente + '}';
+        return "Direccion{" + "codigo=" + codigo + ", calle1=" + calle1 + ", calle2=" + calle2 + ", referenda=" + referencia + ", actual=" + actual + ", cliente=" + cliente + '}';
     }
 
     

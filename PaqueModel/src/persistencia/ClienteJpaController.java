@@ -56,7 +56,7 @@ public class ClienteJpaController implements Serializable {
             em.getTransaction().begin();
             List<Direccion> attachedDirecciones = new ArrayList<Direccion>();
             for (Direccion direccionesDireccionToAttach : cliente.getDirecciones()) {
-                direccionesDireccionToAttach = em.getReference(direccionesDireccionToAttach.getClass(), direccionesDireccionToAttach.getId());
+                direccionesDireccionToAttach = em.getReference(direccionesDireccionToAttach.getClass(), direccionesDireccionToAttach.getCodigo());
                 attachedDirecciones.add(direccionesDireccionToAttach);
             }
             cliente.setDirecciones(attachedDirecciones);
@@ -68,7 +68,7 @@ public class ClienteJpaController implements Serializable {
             cliente.setEntregas(attachedEntregas);
             List<Paquete> attachedPaquetes = new ArrayList<Paquete>();
             for (Paquete paquetesPaqueteToAttach : cliente.getPaquetes()) {
-                paquetesPaqueteToAttach = em.getReference(paquetesPaqueteToAttach.getClass(), paquetesPaqueteToAttach.getIdpaq());
+                paquetesPaqueteToAttach = em.getReference(paquetesPaqueteToAttach.getClass(), paquetesPaqueteToAttach.getCodigo());
                 attachedPaquetes.add(paquetesPaqueteToAttach);
             }
             cliente.setPaquetes(attachedPaquetes);
@@ -127,7 +127,7 @@ public class ClienteJpaController implements Serializable {
             List<Paquete> paquetesNew = cliente.getPaquetes();
             List<Direccion> attachedDireccionesNew = new ArrayList<Direccion>();
             for (Direccion direccionesNewDireccionToAttach : direccionesNew) {
-                direccionesNewDireccionToAttach = em.getReference(direccionesNewDireccionToAttach.getClass(), direccionesNewDireccionToAttach.getId());
+                direccionesNewDireccionToAttach = em.getReference(direccionesNewDireccionToAttach.getClass(), direccionesNewDireccionToAttach.getCodigo());
                 attachedDireccionesNew.add(direccionesNewDireccionToAttach);
             }
             direccionesNew = attachedDireccionesNew;
@@ -141,7 +141,7 @@ public class ClienteJpaController implements Serializable {
             cliente.setEntregas(entregasNew);
             List<Paquete> attachedPaquetesNew = new ArrayList<Paquete>();
             for (Paquete paquetesNewPaqueteToAttach : paquetesNew) {
-                paquetesNewPaqueteToAttach = em.getReference(paquetesNewPaqueteToAttach.getClass(), paquetesNewPaqueteToAttach.getIdpaq());
+                paquetesNewPaqueteToAttach = em.getReference(paquetesNewPaqueteToAttach.getClass(), paquetesNewPaqueteToAttach.getCodigo());
                 attachedPaquetesNew.add(paquetesNewPaqueteToAttach);
             }
             paquetesNew = attachedPaquetesNew;
