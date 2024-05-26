@@ -51,9 +51,8 @@ public class Proyecto {
                     System.out.println("<1> Bodeguero");
                     System.out.println("<2> Repartidor");
                     int opc = sc.nextInt();
-                    sc.nextLine();
                     switch (opc) {
-                        case 1:
+                        case 1 -> {
                             System.out.println("Creando Empleado Bodeguero");
                             System.out.println("Ingrese la cedula ");
                             aux = sc.nextLine();
@@ -66,12 +65,11 @@ public class Proyecto {
                             Bodegero bg = new Bodegero(); // Supone que hay un constructor adecuado
                             crearBodegero(objbg);
                             bodegueros.add(bg);
-                        break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Creando Empleado Repartidor");
                             aux = sc.nextLine();
                             System.out.println("Ingrese la cedula ");
-                            aux = sc.nextLine();
                             aux = sc.nextLine();
                             System.out.println("Ingrese el apellido");
                             aux = sc.nextLine();
@@ -82,11 +80,10 @@ public class Proyecto {
                             Repartidor rep = new Repartidor();
                             crearRepartidor(objrep);
                             repartidores.add(rep);
-                            
-                        break;
+                        }
                     }
 
-                case 3:
+                case 2:
                     System.out.println("CREANDO UN CLIENTE");
                     System.out.println("Ingrese la cedula ");
                     aux = sc.nextLine();
@@ -95,13 +92,15 @@ public class Proyecto {
                     System.out.println("Ingrese la nombre");
                     aux = sc.nextLine();
                     System.out.println("Ingrese el correo");
-                    aux = sc.nextLine(); 
+                    aux = sc.nextLine();
+                    Cliente cli = new Cliente();
+                    crearCliente(objcli);
                     clientes.add(objcli);
 
-                case 4:
+                case 3:
                     listarEmpleadosYClientes();
                     break;
-                case 5:
+                case 4:
                     bandera = false;
                     break;
                 default:
@@ -110,9 +109,9 @@ public class Proyecto {
 
             }
         } while (true);
-        
+
     }
-    
+
     public static void crearBodegero(Bodegero bg) {
         Random random = new Random();
         int idNum = 333 + random.nextInt(1000);
@@ -120,32 +119,39 @@ public class Proyecto {
         bg.setIdBodegero(id);
         System.out.println("Bodegero creado con ID: " + id);
     }
-    
+
     public static void crearRepartidor(Repartidor objrep) {
         Random random = new Random();
-        int idNum = 333 + random.nextInt(1000);
+        int idNum = 222 + random.nextInt(1000);
         String id = Integer.toString(idNum);
         objrep.setIdRepartidor(id);
-        System.out.println("Bodegero creado con ID: " + id);
+        System.out.println("Repartidor creado con ID: " + id);
     }
-    
+    public static void crearCliente(Cliente objcli) {
+        Random random = new Random();
+        int idNum = 111 + random.nextInt(1000);
+        String id = Integer.toString(idNum);
+        objrep.setIdRepartidor(id);
+        System.out.println("Cliente creado con ID: " + id);
+    }
+
     public static void listarEmpleadosYClientes() {
         System.out.println("=====LISTA DE EMPLEADOS Y CLIENTES=====");
         System.out.println("Bodegueros:");
         for (Bodegero b : bodegueros) {
-            System.out.println("ID: " + b.getIdBodegero() + ", Nombre: " + 
-                    b.getNombre() + " " + b.getApellido() + ", Cédula: " +
-                    b.getCedula() + ", Correo: " + b.getCorreo());
+            System.out.println("ID: " + b.getIdBodegero() + ", Nombre: "
+                    + b.getNombre() + " " + b.getApellido() + ", Cédula: "
+                    + b.getCedula() + ", Correo: " + b.getCorreo());
         }
         System.out.println("Repartidores:");
         for (Repartidor r : repartidores) {
-            System.out.println("Nombre: " + r.getNombre() + " " + r.getApellido() 
+            System.out.println("Nombre: " + r.getNombre() + " " + r.getApellido()
                     + ", Cédula: " + r.getCedula() + ", Correo: " + r.getCorreo());
         }
         System.out.println("Clientes:");
         for (Cliente c : clientes) {
-            System.out.println("Nombre: " + c.getNombre() + " " + c.getApellido() +
-                    ", Cédula: " + c.getCedula() + ", Correo: " + c.getCorreo());
+            System.out.println("Nombre: " + c.getNombre() + " " + c.getApellido()
+                    + ", Cédula: " + c.getCedula() + ", Correo: " + c.getCorreo());
         }
     }
 }
