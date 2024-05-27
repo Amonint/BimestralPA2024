@@ -30,11 +30,17 @@ public class PaqueModel {
     static ControladoraPersistencia con = new ControladoraPersistencia();
 
     public static void main(String[] args) throws Exception {
-        // TODO code application logic here
+        //Integrantes:
+        //Ayala Jimenez Abraham Paul 
+        //Benitez Cabrera Omer Alexis 
+        //Ojeda Condo Daniel Martin
+        //Vire Piedra Paola Sofia
+
         /* Bodeguero bodG = new Bodeguero("Centro", "Loja", "11111", "Saritama", "Jose", "srmjs@gmail.com");
         con.crearBodeguero(bodG);
         boolean band = true;
         */
+        
         System.out.println("=====MENU=====");
         System.out.println("Ingrese su cedula");
         aux = sc.nextLine();
@@ -208,7 +214,7 @@ public class PaqueModel {
         } else {
             dirc.setActual(false);
         }
-        
+
         con.crearDireccion(dirc);
         cli.getDirecciones().add(dirc);
         con.editarCliente(cli);
