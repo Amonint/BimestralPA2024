@@ -11,10 +11,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Clases.Cliente;
 import Clases.Direccion;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import persistencia.exceptions.NonexistentEntityException;
 
 /**
@@ -30,7 +32,7 @@ public class DireccionJpaController implements Serializable {
     public DireccionJpaController() {
         emf = Persistence.createEntityManagerFactory("PaqueModelPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -105,7 +107,7 @@ public class DireccionJpaController implements Serializable {
             em.getTransaction().begin();
             Direccion direccion;
             try {
-                direccion = em.getReference(Direccion.class,codigo );
+                direccion = em.getReference(Direccion.class, codigo);
                 direccion.getCodigo();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The direccion with id " + codigo + " no longer exists.", enfe);
@@ -169,5 +171,50 @@ public class DireccionJpaController implements Serializable {
             em.close();
         }
     }
+
+    public void addDireccionCliente(Cliente cliente, Direccion nuevaDireccion) throws NonexistentEntityException, Exception {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+
+            // Verificar que el cliente no sea nulo
+            if (cliente == null) {
+                throw new NonexistentEntityException("The cliente is null.");
+            }
+
+            // Asociar la nueva dirección con el cliente
+            nuevaDireccion.setCliente(cliente);
+            em.persist(nuevaDireccion);
+
+            // Actualizar la lista de direcciones del cliente
+            cliente.getDirecciones().add(nuevaDireccion);
+            em.merge(cliente);
+
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
     
+    public ArrayList<Direccion> findDireccionesByCedulaCliente(Cliente cli) {
+        EntityManager em = getEntityManager();
+        ArrayList<Direccion> direccionesCliente = new ArrayList<>();
+        try {
+            // Consulta para obtener las direcciones de un cliente específico
+            TypedQuery<Direccion> query = em.createQuery(
+                "SELECT d FROM Direccion d WHERE d.cliente.cedula = :cedulaCliente", Direccion.class);
+            query.setParameter("cedulaCliente", cli.getCedula());
+            List<Direccion> direcciones = query.getResultList();
+            direccionesCliente.addAll(direcciones);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return direccionesCliente;
+    }
+
 }

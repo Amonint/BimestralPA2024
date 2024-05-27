@@ -86,7 +86,7 @@ public class Direccion implements Serializable {
 
     @Override
     public String toString() {
-        return "Direccion{" + "codigo=" + codigo + ", calle1=" + calle1 + ", calle2=" + calle2 + ", referenda=" + referencia + ", actual=" + actual + ", cliente=" + cliente + '}';
+        return "Direccion{" + "codigo=" + codigo + ", calle1=" + calle1 + ", calle2=" + calle2 + ", referenda=" + referencia + ", actual=" + actual + '}';
     }
 
     

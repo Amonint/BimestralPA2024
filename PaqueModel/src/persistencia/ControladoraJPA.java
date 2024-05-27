@@ -13,6 +13,7 @@ import Clases.Estado;
 import Clases.Paquete;
 import Clases.Persona;
 import Clases.Repartidor;
+import java.util.ArrayList;
 import java.util.List;
 import persistencia.exceptions.NonexistentEntityException;
 import persistencia.exceptions.PreexistingEntityException;
@@ -93,6 +94,10 @@ public class ControladoraJPA {
 
     public List<Direccion> listarDirecciones() {
         return direccionJPA.findDireccionEntities();
+    }
+
+    public ArrayList<Direccion> listarDireccionesCliente(Cliente cli) {
+        return direccionJPA.findDireccionesByCedulaCliente(cli);
     }
 
     public Direccion buscarDireccion(String codigo) {
@@ -206,6 +211,12 @@ public class ControladoraJPA {
     public int contarPaquetes() {
         return paqueteJPA.getPaqueteCount();
     }
+
+    public ArrayList<Paquete> listarPaquetesPorCliente(Cliente cli) {
+        return paqueteJPA.findPaquetesByCliente(cli);
+    }
+    //Metodos de persona
+
     PersonaJpaController personaJPA = new PersonaJpaController();
 
     public void crearPersona(Persona persona) throws PreexistingEntityException, Exception {

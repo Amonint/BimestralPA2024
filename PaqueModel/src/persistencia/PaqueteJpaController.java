@@ -19,6 +19,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import persistencia.exceptions.NonexistentEntityException;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -258,5 +259,19 @@ public class PaqueteJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public ArrayList<Paquete> findPaquetesByCliente(Cliente clienteCedula) {
+        EntityManager em = getEntityManager();
+        ArrayList<Paquete> paquetesCliente = new ArrayList<>();
+        try {
+            TypedQuery<Paquete> query = em.createQuery(
+                    "SELECT p FROM Paquete p WHERE p.cliente.cedula = :clienteCedula", Paquete.class);
+            query.setParameter("clienteCedula", clienteCedula.getCedula());
+            List<Paquete> paquetes = query.getResultList();
+            paquetesCliente.addAll(paquetes);
+        } finally {
+            em.close();
+        }
+        return paquetesCliente;
+    }
 }

@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import java.util.ArrayList;
 import java.util.List;
 import persistencia.ControladoraJPA;
 import persistencia.exceptions.NonexistentEntityException;
@@ -91,6 +92,9 @@ public class ControladoraPersistencia {
 
     public int contarDirecciones() {
         return controJPA.contarDirecciones();
+    }
+    public ArrayList<Direccion> listarDireccionesCliente(Cliente cli) {
+        return controJPA.listarDireccionesCliente(cli);
     }
     // Métodos para operar con la entidad Empleado
 
@@ -191,6 +195,9 @@ public class ControladoraPersistencia {
 
     public int contarPaquetes() {
         return controJPA.contarPaquetes();
+    }
+      public ArrayList<Paquete> listarPaquetesPorPersona(Cliente cli) {
+        return controJPA.listarPaquetesPorCliente(cli);
     }
     // Métodos para operar con la entidad Persona
 
